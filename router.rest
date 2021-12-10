@@ -1,0 +1,75 @@
+# user with id 42, without turnover discount > works
+POST http://localhost:3001/transaction HTTP/1.1
+content-type: application/json
+
+{
+  "date": "2021-12-01",
+  "amount": "20.00",
+  "currency": "USD",
+  "client_id": 42
+}
+
+###
+
+# user with id 42, with turnover discount > works
+POST http://localhost:3001/transaction HTTP/1.1
+content-type: application/json
+
+{
+  "date": "2021-12-01",
+  "amount": "500.00",
+  "currency": "USD",
+  "client_id": 42
+}
+
+###
+
+# amount less than 5, not user 42, without turnover discount > works
+POST http://localhost:3001/transaction HTTP/1.1
+content-type: application/json
+
+{
+  "date": "2021-12-01",
+  "amount": "4.00",
+  "currency": "USD",
+  "client_id": 12
+}
+
+###
+
+# amount less than 5, not user 42, with turnover discount > works
+POST http://localhost:3001/transaction HTTP/1.1
+content-type: application/json
+
+{
+  "date": "2021-12-01",
+  "amount": "4.00",
+  "currency": "USD",
+  "client_id": 32
+}
+
+###
+
+# amount bigger than 5, not user 42, with turnover discount > works
+POST http://localhost:3001/transaction HTTP/1.1
+content-type: application/json
+
+{
+  "date": "2021-12-01",
+  "amount": "10.00",
+  "currency": "USD",
+  "client_id": 32
+}
+
+###
+
+# amount bigger than 5, not user 42, without turnover discount > works
+POST http://localhost:3001/transaction HTTP/1.1
+content-type: application/json
+
+{
+  "date": "2021-12-01",
+  "amount": "10.00",
+  "currency": "USD",
+  "client_id": 12
+}
